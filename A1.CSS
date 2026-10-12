@@ -1,0 +1,924 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #090a09;
+    --panel: #141512;
+    --panel-light: #1c1d18;
+    --gold: #d8b45a;
+    --gold-light: #ffe5a0;
+    --gold-dark: #92702c;
+    --white: #f8f6ef;
+    --muted: #a5a398;
+    --green: #64d6a0;
+    --red: #ff7272;
+    --orange: #ffc46a;
+    --border: rgba(216, 180, 90, 0.19);
+    --radius: 18px;
+    --transition: 0.28s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    padding: 35px 22px 60px;
+    direction: rtl;
+    font-family: Tahoma, Arial, sans-serif;
+    color: var(--white);
+    line-height: 1.9;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(216, 180, 90, 0.11),
+            transparent 43%
+        ),
+        radial-gradient(
+            ellipse at 100% 80%,
+            rgba(216, 180, 90, 0.045),
+            transparent 35%
+        ),
+        #090a09;
+}
+
+/* ============ MAIN TITLE ============ */
+
+h1.d {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto 12px;
+    text-align: center;
+    font-size: clamp(28px, 5vw, 43px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: var(--gold-light);
+    text-shadow: 0 0 30px rgba(216, 180, 90, 0.12);
+}
+
+h1.d::before {
+    content: "ELITE FITNESS";
+    display: block;
+    margin-bottom: 4px;
+    color: var(--gold);
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    font-weight: 700;
+}
+
+h1.d::after {
+    content: "";
+    display: block;
+    width: 75px;
+    height: 3px;
+    margin: 12px auto 0;
+    border-radius: 10px;
+    background: linear-gradient(
+        90deg,
+        var(--gold-dark),
+        var(--gold-light),
+        var(--gold-dark)
+    );
+    box-shadow: 0 0 15px rgba(216, 180, 90, 0.2);
+}
+
+/* ============ SECTION TITLES ============ */
+
+h2.d {
+    width: fit-content;
+    max-width: 100%;
+    margin: 37px auto 20px;
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 800;
+    text-align: center;
+}
+
+h2.d::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 22px;
+    margin-left: 10px;
+    vertical-align: middle;
+    border-radius: 5px;
+    background: var(--gold);
+    box-shadow: 0 0 12px rgba(216, 180, 90, 0.3);
+}
+
+/* ============ ADD STUDENT PANEL ============ */
+
+.A1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    width: min(100%, 720px);
+    margin: 0 auto;
+    padding: 25px;
+
+    background: linear-gradient(
+        145deg,
+        #191a16,
+        #11120f
+    );
+
+    border: 1px solid var(--border);
+    border-radius: 22px;
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.32),
+        inset 0 1px rgba(255, 255, 255, 0.025);
+}
+
+/* ============ INPUTS ============ */
+
+.A {
+    width: min(100%, 320px);
+    min-width: 0;
+    min-height: 54px;
+    padding: 14px 17px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--white);
+    background: #0c0d0b;
+    border: 1px solid #34342b;
+    border-radius: 12px;
+    outline: none;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition),
+        background var(--transition),
+        transform var(--transition);
+}
+
+.A::placeholder {
+    color: #77766a;
+}
+
+.A:hover {
+    border-color: #726039;
+}
+
+.A:focus {
+    background: #11120e;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 4px rgba(216, 180, 90, 0.09);
+    transform: translateY(-2px);
+}
+
+input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* ============ BUTTON BASE ============ */
+
+button {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 43px;
+    padding: 10px 17px;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+
+    transition:
+        transform 0.23s ease,
+        background 0.23s ease,
+        border-color 0.23s ease,
+        box-shadow 0.23s ease,
+        filter 0.23s ease;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        100deg,
+        transparent,
+        rgba(255, 255, 255, 0.16),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+    pointer-events: none;
+}
+
+button:hover::before {
+    left: 150%;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.08);
+}
+
+button:active {
+    transform: translateY(1px) scale(0.97);
+}
+
+/* ============ REGISTER BUTTON ============ */
+
+.S {
+    display: flex;
+    width: min(100%, 300px);
+    min-height: 52px;
+    margin: 18px auto 30px;
+
+    background: linear-gradient(
+        120deg,
+        #a98230,
+        #e5c776,
+        #b48a36
+    );
+
+    color: #16140d;
+    border: 1px solid #f1d995;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 900;
+
+    box-shadow:
+        0 8px 25px rgba(216, 180, 90, 0.12),
+        inset 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.S::after {
+    content: "+";
+    margin-right: 8px;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.S:hover {
+    box-shadow: 0 10px 30px rgba(216, 180, 90, 0.22);
+}
+
+/* ============ SEPARATOR ============ */
+
+hr {
+    width: min(100%, 950px);
+    height: 1px;
+    margin: 38px auto;
+    border: none;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(216, 180, 90, 0.48),
+        transparent
+    );
+}
+
+/* ============ SEARCH ============ */
+
+#search {
+    display: block;
+    width: min(100%, 600px);
+    margin: 0 auto 30px;
+}
+
+/* ============ STUDENT GRID ============ */
+
+.h {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+    align-items: start;
+    gap: 20px;
+    width: min(100%, 1250px);
+    margin: 0 auto;
+}
+
+/* ============ STUDENT CARDS ============ */
+
+.h > div {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    padding: 23px;
+
+    background: linear-gradient(
+        145deg,
+        #191a16,
+        #10110e 75%
+    );
+
+    border: 1px solid #303027;
+    border-radius: var(--radius);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.25),
+        inset 0 1px rgba(255, 255, 255, 0.025);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+    animation: cardEnter 0.4s ease both;
+}
+
+.h > div::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        var(--gold-light),
+        transparent
+    );
+
+    opacity: 0.85;
+}
+
+.h > div:hover {
+    transform: translateY(-5px);
+    border-color: rgba(216, 180, 90, 0.45);
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.35),
+        0 0 24px rgba(216, 180, 90, 0.045);
+}
+
+/* ============ STUDENT NAME ============ */
+
+.h > div > h3 {
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    color: var(--gold-light);
+    font-size: 19px;
+    font-weight: 900;
+    overflow-wrap: anywhere;
+    border-bottom: 1px solid var(--border);
+}
+
+.h > div > h3::before {
+    content: "ATHLETE";
+    display: block;
+    margin-bottom: 5px;
+    color: var(--gold-dark);
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+/* ============ STUDENT DETAILS ============ */
+
+.h > div > p.d {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin: 9px 0;
+    padding: 11px 12px;
+    color: #d0cec3;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.045);
+    border-radius: 9px;
+}
+
+.h > div > p.d:last-of-type {
+    margin-bottom: 17px;
+}
+
+/* ============ ATTENDANCE ============ */
+
+.S1 {
+    background: linear-gradient(135deg, #16734b, #229664);
+    border: 1px solid rgba(100, 214, 160, 0.22);
+    box-shadow: 0 5px 15px rgba(34, 150, 100, 0.1);
+}
+
+.S1:hover {
+    box-shadow: 0 8px 22px rgba(34, 150, 100, 0.22);
+}
+
+/* ============ ABSENCE & DELETE ============ */
+
+.S2 {
+    background: #301b1a;
+    color: #ffaaa4;
+    border: 1px solid rgba(255, 114, 114, 0.22);
+}
+
+.S2:hover {
+    background: #47211f;
+    border-color: rgba(255, 114, 114, 0.45);
+}
+
+/* ============ HISTORY ============ */
+
+.S3 {
+    background: #282319;
+    color: var(--gold-light);
+    border: 1px solid rgba(216, 180, 90, 0.3);
+}
+
+.S3:hover {
+    background: #39301d;
+    border-color: var(--gold);
+    box-shadow: 0 5px 18px rgba(216, 180, 90, 0.1);
+}
+
+/* ============ CARD BUTTONS ============ */
+
+.h > div > button {
+    margin: 4px 0 4px 4px;
+    max-width: 100%;
+}
+
+/* ============ HISTORY PANEL ============ */
+
+.h > div > div[id^="history-"] {
+    margin-top: 16px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+}
+
+.h > div > div[id^="history-"]:empty {
+    display: none;
+}
+
+.h > div > div[id^="history-"] h4 {
+    margin-bottom: 12px;
+    color: var(--gold);
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.h > div > div[id^="history-"] p {
+    margin-top: 8px;
+    padding: 11px;
+    color: #d5d1c4;
+    font-size: 12px;
+    line-height: 2;
+    overflow-wrap: anywhere;
+
+    background: rgba(216, 180, 90, 0.045);
+    border-right: 3px solid var(--gold-dark);
+    border-radius: 6px;
+    box-shadow: 0 0 30px rgba(255, 229, 160, 0.05);
+
+    transition: background 0.25s ease;
+}
+
+.h > div > div[id^="history-"] p:hover {
+    background: rgba(216, 180, 90, 0.1);
+}
+
+/* ============ EMPTY SEARCH ============ */
+
+.h > p {
+    grid-column: 1 / -1;
+    padding: 30px 18px;
+    color: var(--muted);
+    text-align: center;
+    background: var(--panel);
+    border: 1px dashed #454133;
+    border-radius: 15px;
+}
+
+/* ============ SELECTION & FOCUS ============ */
+
+::selection {
+    color: #111;
+    background: var(--gold);
+}
+
+:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+}
+
+/* ============ ANIMATION ============ */
+
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============ TABLET ============ */
+
+@media (max-width: 768px) {
+    body {
+        padding: 25px 16px 40px;
+    }
+
+    .A1 {
+        padding: 19px;
+    }
+
+    .A {
+        width: 100%;
+        max-width: none;
+    }
+
+    .h {
+        gap: 15px;
+    }
+
+    .h > div {
+        padding: 19px;
+    }
+}
+
+/* ============ MOBILE ============ */
+
+@media (max-width: 480px) {
+    body {
+        padding: 20px 12px 35px;
+    }
+
+    h1.d {
+        font-size: 28px;
+    }
+
+    h2.d {
+        font-size: 17px;
+    }
+
+    .A1 {
+        padding: 15px;
+    }
+
+    .A {
+        min-height: 49px;
+    }
+
+    .S {
+        width: 100%;
+    }
+
+    .h {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    .h > div {
+        padding: 17px;
+    }
+
+    .h > div > button {
+        padding: 9px 11px;
+        font-size: 11px;
+    }
+}
+
+/* ============ REDUCED MOTION ============ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================================
+   NEW SECTIONS: subscriptions, income, monthly reports
+   Appended to the original black-and-gold stylesheet.
+========================================================= */
+
+.app-shell {
+    width: min(100%, 1450px);
+    margin: 0 auto;
+}
+
+.page-subtitle {
+    margin: 0 auto 28px;
+    color: var(--muted);
+    text-align: center;
+    font-size: 13px;
+}
+
+.app-section {
+    width: 100%;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: end;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+    color: #d9d4c5;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.field .A {
+    width: 100%;
+    max-width: none;
+}
+
+select.A {
+    color-scheme: dark;
+}
+
+input[type="date"].A,
+input[type="month"].A {
+    color-scheme: dark;
+}
+
+.helper-text {
+    width: min(100%, 850px);
+    margin: 12px auto 0;
+    padding: 12px 15px;
+    color: #c6c0ad;
+    font-size: 12px;
+    line-height: 2;
+    background: rgba(216, 180, 90, 0.045);
+    border-right: 3px solid var(--gold-dark);
+    border-radius: 8px;
+}
+
+.search-input {
+    display: block;
+    width: min(100%, 600px);
+    margin: 0 auto 28px;
+}
+
+.student-card {
+    min-width: 0;
+}
+
+.student-card .d strong {
+    text-align: left;
+    color: var(--gold-light);
+    font-weight: 800;
+}
+
+.card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 14px;
+}
+
+.card-actions button {
+    flex: 1 1 42%;
+}
+
+.history-panel {
+    margin-top: 14px;
+}
+
+.history-panel:empty {
+    display: none;
+}
+
+.empty-card {
+    grid-column: 1 / -1;
+    padding: 28px 18px;
+    color: var(--muted);
+    text-align: center;
+    background: var(--panel);
+    border: 1px dashed #454133;
+    border-radius: 15px;
+}
+
+.report-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: end;
+    gap: 14px;
+    margin: 0 auto 22px;
+}
+
+.report-month-field {
+    width: min(100%, 320px);
+}
+
+.secondary-button {
+    color: var(--gold-light);
+    background: #282319;
+    border-color: rgba(216, 180, 90, 0.3);
+}
+
+.secondary-button:hover {
+    background: #39301d;
+    border-color: var(--gold);
+    box-shadow: 0 5px 18px rgba(216, 180, 90, 0.1);
+}
+
+.report-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+    gap: 15px;
+    width: min(100%, 1250px);
+    margin: 0 auto;
+}
+
+.report-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+    min-width: 0;
+    padding: 22px;
+    background: linear-gradient(145deg, #191a16, #10110e 75%);
+    border: 1px solid #303027;
+    border-radius: var(--radius);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.report-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(216, 180, 90, 0.45);
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.3);
+}
+
+.report-card span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.report-card strong {
+    color: var(--gold-light);
+    font-size: clamp(15px, 2vw, 20px);
+    overflow-wrap: anywhere;
+}
+
+.total-card {
+    border-color: rgba(216, 180, 90, 0.5);
+    background: linear-gradient(145deg, #292316, #11110e 80%);
+}
+
+.table-wrap {
+    width: min(100%, 1250px);
+    margin: 22px auto 0;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(20, 21, 18, 0.8);
+}
+
+.data-table {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: collapse;
+    text-align: right;
+}
+
+.data-table th,
+.data-table td {
+    padding: 13px 15px;
+    border-bottom: 1px solid rgba(216, 180, 90, 0.12);
+    font-size: 12px;
+    white-space: normal;
+}
+
+.data-table th {
+    color: var(--gold-light);
+    background: rgba(216, 180, 90, 0.08);
+    font-weight: 900;
+}
+
+.data-table td {
+    color: #ded9ca;
+}
+
+.data-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.data-table tbody tr:hover {
+    background: rgba(216, 180, 90, 0.045);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.small-delete {
+    min-height: 32px;
+    padding: 5px 10px;
+    color: #ffaaa4;
+    background: #301b1a;
+    border: 1px solid rgba(255, 114, 114, 0.22);
+    border-radius: 8px;
+}
+
+.small-delete:hover {
+    background: #47211f;
+    border-color: rgba(255, 114, 114, 0.45);
+}
+
+.empty-note {
+    margin: 14px auto 0;
+    color: var(--muted);
+    text-align: center;
+    font-size: 12px;
+}
+
+.empty-note[hidden],
+.table-wrap[hidden] {
+    display: none !important;
+}
+
+.app-footer {
+    margin: 55px auto 0;
+    padding-top: 22px;
+    color: #827f72;
+    text-align: center;
+    font-size: 11px;
+    border-top: 1px solid var(--border);
+}
+
+.app-footer p + p {
+    margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .report-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .report-card {
+        padding: 17px;
+    }
+}
+
+@media (max-width: 480px) {
+    .report-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .report-controls {
+        align-items: stretch;
+    }
+
+    .report-month-field {
+        width: 100%;
+    }
+
+    .secondary-button {
+        width: 100%;
+    }
+
+    .card-actions button {
+        flex-basis: 100%;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 10px;
+    }
+}

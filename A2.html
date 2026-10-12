@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090a09">
+
+    <title>مدیریت باشگاه | ELITE FITNESS</title>
+
+    <link rel="stylesheet" href="A1.CSS">
+</head>
+
+<body>
+    <main class="app-shell">
+
+        <h1 class="d">مدیریت باشگاه</h1>
+
+        <p class="page-subtitle">
+            مدیریت شاگردها، اشتراک‌ها، درآمد و حق‌الزحمه مربیان
+        </p>
+
+        <!-- ثبت شاگرد جدید -->
+        <section class="app-section" aria-labelledby="registerTitle">
+
+            <h2 class="d" id="registerTitle">ثبت شاگرد جدید</h2>
+
+            <div class="A1 form-grid">
+
+                <label class="field">
+                    <span>نام و نام خانوادگی</span>
+                    <input class="A" type="text" id="name"
+                           placeholder="مثلاً علی رضایی"
+                           maxlength="80" autocomplete="name">
+                </label>
+
+                <label class="field">
+                    <span>تعداد کل جلسات تمرینی</span>
+                    <input class="A" type="number" id="sessions"
+                           placeholder="مثلاً 12" min="1" step="1">
+                </label>
+
+                <label class="field">
+                    <span>نوع اشتراک</span>
+                    <select class="A" id="membershipType">
+                        <option value="1">یک‌ماهه</option>
+                        <option value="3">سه‌ماهه</option>
+                    </select>
+                </label>
+
+                <label class="field">
+                    <span>تاریخ شروع اشتراک</span>
+                    <input class="A" type="date" id="membershipStart">
+                </label>
+
+                <label class="field">
+                    <span>شهریه اشتراک (ریال)</span>
+                    <input class="A" type="number" id="membershipPrice"
+                           placeholder="مبلغ دریافتی" min="0" step="1">
+                </label>
+
+                <label class="field">
+                    <span>جلسات ایروبیک در هفته</span>
+                    <input class="A" type="number" id="aerobicWeekly"
+                           placeholder="مثلاً 3" min="0" step="1" value="0">
+                </label>
+
+                <label class="field">
+                    <span>جلسات ایروبیک در ماه</span>
+                    <input class="A" type="number" id="aerobicMonthly"
+                           placeholder="مثلاً 12" min="0" step="1" value="0">
+                </label>
+
+                <label class="field">
+                    <span>شهریه ایروبیک ماهانه (ریال)</span>
+                    <input class="A" type="number" id="aerobicMonthlyPrice"
+                           placeholder="در صورت ثبت‌نام" min="0" step="1" value="0">
+                </label>
+
+            </div>
+
+            <p class="helper-text">
+                ثبت شاگرد به‌تنهایی درآمدی ثبت نمی‌کند.
+                برای گزارش مالی، مبلغی را که واقعاً دریافت شده
+                در بخش «ثبت درآمد» وارد کنید.
+            </p>
+
+            <button class="S" type="button" onclick="addStudent()">
+                ثبت شاگرد
+            </button>
+
+        </section>
+
+        <hr>
+
+        <!-- جستجو و لیست شاگردها -->
+        <section class="app-section" aria-labelledby="searchTitle">
+
+            <h2 class="d" id="searchTitle">جستجوی شاگرد</h2>
+
+            <input class="A search-input"
+                   type="search"
+                   id="search"
+                   placeholder="نام شاگرد را وارد کنید..."
+                   oninput="showStudents()">
+
+            <h2 class="d">لیست شاگردها</h2>
+
+            <div class="h" id="students" aria-live="polite"></div>
+
+        </section>
+
+        <hr>
+
+        <!-- ثبت درآمد -->
+        <section class="app-section" aria-labelledby="incomeTitle">
+
+            <h2 class="d" id="incomeTitle">ثبت درآمد باشگاه</h2>
+
+            <div class="A1 form-grid">
+
+                <label class="field">
+                    <span>نوع درآمد</span>
+                    <select class="A" id="incomeCategory">
+                        <option value="membership">شهریه ثابت / اشتراک</option>
+                        <option value="aerobicMonthly">شهریه ایروبیک ماهانه</option>
+                        <option value="aerobicDaily">شهریه ایروبیک روزانه</option>
+                        <option value="programming">درآمد برنامه‌نویسی</option>
+                    </select>
+                </label>
+
+                <label class="field">
+                    <span>مبلغ دریافتی (ریال)</span>
+                    <input class="A" type="number" id="incomeAmount"
+                           placeholder="مبلغ را به ریال وارد کنید"
+                           min="1" step="1">
+                </label>
+
+                <label class="field">
+                    <span>تاریخ دریافت وجه</span>
+                    <input class="A" type="date" id="incomeDate">
+                </label>
+
+                <label class="field">
+                    <span>توضیحات (اختیاری)</span>
+                    <input class="A" type="text" id="incomeNote"
+                           placeholder="نام شاگرد یا توضیح پرداخت"
+                           maxlength="120">
+                </label>
+
+            </div>
+
+            <p class="helper-text">
+                گزارش ماهانه بر اساس تاریخ واقعی دریافت پول محاسبه می‌شود.
+                پرداخت سه‌ماهه را فقط یک‌بار و به مبلغ واقعی دریافتی ثبت کنید.
+            </p>
+
+            <button class="S" type="button" onclick="addIncome()">
+                ثبت درآمد
+            </button>
+
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>تاریخ</th>
+                            <th>نوع درآمد</th>
+                            <th>مبلغ (ریال)</th>
+                            <th>توضیحات</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="incomeRows"></tbody>
+                </table>
+            </div>
+
+            <p class="empty-note" id="incomeEmpty">
+                هنوز درآمدی ثبت نشده است.
+            </p>
+
+        </section>
+
+        <hr>
+
+        <!-- گزارش ماهانه -->
+        <section class="app-section" aria-labelledby="reportTitle">
+
+            <h2 class="d" id="reportTitle">گزارش درآمد ماهانه</h2>
+
+            <div class="report-controls">
+
+                <label class="field report-month-field">
+                    <span>ماه گزارش</span>
+                    <input class="A" type="month"
+                           id="reportMonth" onchange="renderReports()">
+                </label>
+
+                <button class="secondary-button"
+                        type="button"
+                        onclick="renderReports()">
+                    به‌روزرسانی گزارش
+                </button>
+
+            </div>
+
+            <div class="report-grid">
+
+                <article class="report-card total-card">
+                    <span>کل درآمد ماه</span>
+                    <strong id="monthlyTotal">۰ ریال</strong>
+                </article>
+
+                <article class="report-card">
+                    <span>شهریه ثابت / اشتراک</span>
+                    <strong id="membershipTotal">۰ ریال</strong>
+                </article>
+
+                <article class="report-card">
+                    <span>ایروبیک ماهانه</span>
+                    <strong id="aerobicMonthlyTotal">۰ ریال</strong>
+                </article>
+
+                <article class="report-card">
+                    <span>ایروبیک روزانه</span>
+                    <strong id="aerobicDailyTotal">۰ ریال</strong>
+                </article>
+
+                <article class="report-card">
+                    <span>برنامه‌نویسی</span>
+                    <strong id="programmingTotal">۰ ریال</strong>
+                </article>
+
+            </div>
+
+        </section>
+
+        <hr>
+
+        <!-- مربیان و حق‌الزحمه -->
+        <section class="app-section" aria-labelledby="trainerTitle">
+
+            <h2 class="d" id="trainerTitle">مربیان و حق‌الزحمه</h2>
+
+            <div class="A1 form-grid trainer-form">
+
+                <label class="field">
+                    <span>نام مربی</span>
+                    <input class="A" id="trainerName"
+                           type="text"
+                           placeholder="نام و نام خانوادگی"
+                           maxlength="80">
+                </label>
+
+                <label class="field">
+                    <span>درصد حق‌الزحمه از کل درآمد ماه (%)</span>
+                    <input class="A" id="trainerPercent"
+                           type="number"
+                           min="0" max="100" step="0.1"
+                           placeholder="مثلاً 20">
+                </label>
+
+            </div>
+
+            <p class="helper-text">
+                حق‌الزحمه هر مربی برابر است با کل درآمد ثبت‌شده در
+                ماه گزارش ضرب‌در درصد آن مربی.
+            </p>
+
+            <button class="S" type="button" onclick="addTrainer()">
+                ثبت مربی
+            </button>
+
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>نام مربی</th>
+                            <th>درصد</th>
+                            <th>حق‌الزحمه ماه گزارش</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="trainerRows"></tbody>
+                </table>
+            </div>
+
+            <p class="empty-note" id="trainerEmpty">
+                هنوز مربی‌ای ثبت نشده است.
+            </p>
+
+        </section>
+
+        <footer class="app-footer">
+            <p>ELITE FITNESS · سامانه مدیریت باشگاه</p>
+            <p>اطلاعات این نسخه در حافظه مرورگر همین دستگاه ذخیره می‌شود.</p>
+        </footer>
+
+    </main>
+
+    <script src="A1.JS"></script>
+</body>
+</html>
